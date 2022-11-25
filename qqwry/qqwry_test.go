@@ -6,7 +6,7 @@ import (
 )
 
 func TestQQwry(t *testing.T) {
-	q := NewQQwry("qqwry.dat")
+	q, _ := NewQQwry("qqwry.dat")
 	result, err := q.Find("8.8.8.8")
 	if err != nil {
 		log.Fatal(err)

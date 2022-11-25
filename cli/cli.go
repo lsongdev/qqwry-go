@@ -12,8 +12,14 @@ func Run() {
 	flag.StringVar(&ip, "ip", "127.0.0.1", "IP address")
 	flag.Parse()
 
-	q := qqwry.NewQQwry("qqwry.dat")
-	result, _ := q.Find(ip)
+	q, err := qqwry.NewQQwry("qqwry.dat")
+	if err != nil {
+		panic(err)
+	}
+	result, err := q.Find(ip)
+	if err != nil {
+		panic(err)
+	}
 	fmt.Println(result.IP)
 	fmt.Println(result.Country, result.City)
 }
