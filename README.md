@@ -1,25 +1,34 @@
+# qqwry
+
+> 🌎 A lightweight native Golang implementation of GeoIP API
+
+
+## Example
+
+```go
 package cli
 
 import (
-	"flag"
 	"fmt"
 
 	"github.com/song940/qqwry/qqwry"
 )
 
-func Run() {
-	var ip string
-	flag.StringVar(&ip, "ip", "127.0.0.1", "IP address")
-	flag.Parse()
-
+func main() {
 	q, err := qqwry.NewQQwry("qqwry.dat")
 	if err != nil {
 		panic(err)
 	}
-	result, err := q.Find(ip)
+	result, err := q.Find("1.1.1.1")
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(result.IP)
 	fmt.Println(result.Country, result.City)
 }
+
+```
+
+## License
+
+This project is licensed under the MIT license.
